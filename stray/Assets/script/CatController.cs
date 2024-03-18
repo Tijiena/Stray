@@ -57,7 +57,7 @@ public class CatController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         readyToJump = true;
-        catAnim = GetComponent<Animator>();
+        catAnim = GetComponent<Animator>(); 
         /*playerAnimation = GetComponent<Animation>();
         playerAnimation.AddClip(idleAnimation, "Base");
         playerAnimation.AddClip(walkAnimation, "Trot_F");
@@ -67,18 +67,9 @@ public class CatController : MonoBehaviour
 
     private void Update()
     {
-         switch (state)
-        {
-            case MovementState.walking:
-                //playerAnimation.Play("Trot_F");
-                break;
-            case MovementState.sprinting:
-                
-                break;
-            default:
-               // playerAnimation.Play("Base");
-                break;
-        }
+        //bool isWalking = catAnim.GetBool(isWalking);
+       // bool isJumping = catAnim.GetBool(isJumping);
+        
 
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
 
@@ -86,7 +77,25 @@ public class CatController : MonoBehaviour
         SpeedControl();
 
       //drag
-        if (grounded)
+       
+ switch (state)
+        {
+            case MovementState.walking:
+             //catAnim.SetBool("isWalking", true);
+            //catAnim.SetBool("isJumping", false);
+            
+                break;
+            case MovementState.sprinting:
+                
+                break;
+            default:
+           // catAnim.SetBool("isJumping", false);
+            //catAnim.SetBool("isWalking", false);
+              
+                break;
+        }
+
+         if (grounded)
             rb.drag = groundDrag;
         else
             rb.drag = 0;
@@ -108,7 +117,7 @@ public class CatController : MonoBehaviour
             readyToJump = false;
 
             Jump();
-
+            
             Invoke(nameof(ResetJump), jumpCooldown);
         }
        else if(grounded && Input.GetKey(sprintKey))
@@ -118,6 +127,7 @@ public class CatController : MonoBehaviour
         }
         else if (grounded)
         {
+            //catAnim.SetBool("isJumping", false);
             state = MovementState.walking;
             moveSpeed = walkSpeed;
         }
@@ -157,7 +167,7 @@ public class CatController : MonoBehaviour
     {
         // reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
+        //catAnim.SetBool("isJumping", true);
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         //playerAnimation.Play("InPlace");
     }
