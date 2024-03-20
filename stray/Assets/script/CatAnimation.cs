@@ -42,7 +42,7 @@ public class CatAnimation : MonoBehaviour
        if(isrunning && (!forwardPressed || !runPressed)){
         animator.SetBool("isRunning", false);
        }
-        if (!isJumping && jumpPressed && isGrounded && jumpTimer <= 0)
+       /* if (!isJumping && jumpPressed && isGrounded && jumpTimer <= 0)
         {
             animator.SetBool("isJumping", true);
             isGrounded = false;
@@ -58,7 +58,7 @@ public class CatAnimation : MonoBehaviour
             }
         }
      isGrounded = catController.grounded;
-        animator.SetBool("Grounded", isGrounded);
+        animator.SetBool("Grounded", isGrounded);*/
 
     }
 }
