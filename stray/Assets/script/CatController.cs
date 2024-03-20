@@ -63,7 +63,7 @@ public class CatController : MonoBehaviour
         MyInput();
         SpeedControl();
 
-      //drag
+     
        
  switch (state)
         {
@@ -121,29 +121,28 @@ public class CatController : MonoBehaviour
 
     private void MovePlayer()
     {
-        // calculate movement direction
+       
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        // on ground
+ 
         if(grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-
-        // in air
         else if(!grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
     }
 
-    private void SpeedControl()
-    {
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        // limit velocity if needed
-        if(flatVel.magnitude > moveSpeed)
-        {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
-        }
-    }
+     private void SpeedControl()
+  {
+      Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+
+ if(flatVel.magnitude > moveSpeed)
+      {
+          Vector3 limitedVel = flatVel* moveSpeed;
+          rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+      }
+}
 
     private void Jump()
     {
