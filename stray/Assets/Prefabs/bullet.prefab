@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8231462562389836404}
   - component: {fileID: 4078298642343534848}
   - component: {fileID: 8812008704368597477}
-  - component: {fileID: -5278043877619244015}
+  - component: {fileID: -4412758194938536604}
   m_Layer: 0
   m_Name: bullet
-  m_TagString: Untagged
+  m_TagString: bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.041, y: -4.968, z: -12.074}
-  m_LocalScale: {x: 0.07955617, y: 0.07955617, z: 0.07955617}
+  m_LocalScale: {x: 0.234776, y: 0.234776, z: 0.234776}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,7 +106,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &-5278043877619244015
+--- !u!54 &-4412758194938536604
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,7 +125,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
