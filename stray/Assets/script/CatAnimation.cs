@@ -12,7 +12,7 @@ public class CatAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
          catController = GetComponent<CatController>();
     }
-
+        float jumpTimer = 0f;
     // Update is called once per frame
     void Update()
     {
@@ -20,7 +20,7 @@ public class CatAnimation : MonoBehaviour
         bool isWalking = animator.GetBool("isWalking");
         bool isJumping = animator.GetBool("isJumping");
         bool isGrounded = catController.grounded;
-        float jumpTimer = 0f;
+
         float jumpCd = 0.5f;
 
        bool forwardPressed = Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d");
@@ -47,6 +47,7 @@ public class CatAnimation : MonoBehaviour
             animator.SetBool("isJumping", true);
             isGrounded = false;
             jumpTimer = jumpCd;
+            Debug.Log("111");
         }
 
         if (!isGrounded && isJumping)
