@@ -10870,7 +10870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc5f48af2cffd747a079fe8c632e2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portName: COM4
+  portName: COM6
   baudRate: 9600
   messageListener: {fileID: 1522484950}
   reconnectionDelay: 1000
@@ -10888,6 +10888,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serialController: {fileID: 1522484951}
+  x: 0
+  y: 0
+  z: 0
+  button1: 0
+  button2: 0
+  battery: {fileID: 0}
 --- !u!4 &1522484953
 Transform:
   m_ObjectHideFlags: 0
@@ -16714,7 +16720,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6155904552069882893}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.3908284, y: 1e-45, z: 0, w: 0.92046356}
+  m_LocalRotation: {x: -0.3908284, y: -3e-45, z: -1e-45, w: 0.92046356}
   m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
