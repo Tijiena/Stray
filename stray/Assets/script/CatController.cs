@@ -122,8 +122,15 @@ public class CatController : MonoBehaviour
     private void MovePlayer()
     {
        
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        moveDirection = (orientation.forward * verticalInput + orientation.right * horizontalInput).normalized;
+        Vector3 targetVelocity = moveDirection * moveSpeed;
 
+     // Calculate the velocity change needed
+        Vector3 velocityChange = targetVelocity - rb.velocity;
+
+        // Apply the velocity change to the Rigidbody
+        velocityChange.y = 0; // Ensure vertical velocity remains unchanged
+      rb.AddForce(velocityChange, ForceMode.VelocityChange);
  
         if(grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);

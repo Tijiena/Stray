@@ -58,7 +58,7 @@ public class CatAnimation : MonoBehaviour
             }
         }
      isGrounded = catController.grounded;
-        animator.SetBool("Grounded", isGrounded);
+        animator.SetBool("isGrounded", isGrounded);
 
     }
 }
