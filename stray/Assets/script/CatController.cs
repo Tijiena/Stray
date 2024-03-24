@@ -75,8 +75,7 @@ public class CatController : MonoBehaviour
                 
                 break;
             default:
-          
-              
+            
                 break;
         }
 
@@ -96,20 +95,25 @@ public class CatController : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
+        //Meow -w-
+        if(Input.GetKeyDown(KeyCode.R)){
+            AudioManager.instance.PlaySFX(0);
+        }
         //jump
         if(Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
-
-            Jump();
-            
+            Jump();      
             Invoke(nameof(ResetJump), jumpCooldown);
+            //StartCoroutine(DelayedJump(jumpCooldown));
         }
+        //sprint
        else if(grounded && Input.GetKey(sprintKey))
         {
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
         }
+        //idle
         else if (grounded)
         {
            
@@ -158,6 +162,13 @@ public class CatController : MonoBehaviour
         
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
+
+    /*private IEnumerator DelayedJump(float delay){
+        readyToJump = false;
+        yield return new WaitForSeconds(1f);
+        Jump();
+        Invoke(nameof(ResetJump), jumpCooldown);
+    }*/
     private void ResetJump()
     {
         readyToJump = true;
