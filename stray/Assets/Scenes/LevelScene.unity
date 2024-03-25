@@ -19267,6 +19267,7 @@ MonoBehaviour:
   weightValue: 0
   HotSlider: {fileID: 449096287}
   ColdSlider: {fileID: 721490439}
+  colliderNumber: 1
 --- !u!1 &1018582559 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7163514131859173468, guid: 0f5e3e69613b5774d95e83dfcfcf6a01, type: 3}
@@ -39976,7 +39977,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6155904552069882893}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.3908284, y: -3e-45, z: -1e-45, w: 0.92046356}
+  m_LocalRotation: {x: -0.3908284, y: 1e-45, z: 1e-45, w: 0.92046356}
   m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -48433,7 +48434,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3370191265431972095}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.4331887, y: 0.000000014357469, z: 0.000000006900555, w: 0.9013033}
+  m_LocalRotation: {x: -0.4331887, y: 0.0000000111261675, z: 0.000000005347511, w: 0.9013033}
   m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -67891,7 +67892,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6318049362222156429}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.4331887, y: 0.00000003045729, z: -0.000000014638529, w: 0.9013033}
+  m_LocalRotation: {x: 0.43318868, y: 0.000000029074066, z: -0.000000013973716, w: 0.9013033}
   m_LocalPosition: {x: 0, y: 2.2969496, z: -1.8375597}
   m_LocalScale: {x: 0.91877985, y: 0.91878015, z: 0.91878015}
   m_ConstrainProportionsScale: 0

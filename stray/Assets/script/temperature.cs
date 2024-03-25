@@ -18,6 +18,7 @@ public class temperature : MonoBehaviour
     private Vignette vignette;
     public Slider HotSlider;
     public Slider ColdSlider;
+    public int colliderNumber;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,10 +61,10 @@ public class temperature : MonoBehaviour
         }
         else
         {
-            HotSlider.value=HotSlider.value-0.05f;
+            HotSlider.value=HotSlider.value-0.05f/colliderNumber;
             if (HotSlider.value <= 0)
             {
-                ColdSlider.value=ColdSlider.value+0.05f;
+                ColdSlider.value=ColdSlider.value+0.05f/colliderNumber;
             }
         }
     }
