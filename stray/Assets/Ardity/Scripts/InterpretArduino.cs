@@ -10,46 +10,72 @@ public class InterpretArduinoS : MonoBehaviour
     public float x, y, z;
     public int button1, button2;
     public GameObject battery;
-   
+
     void OnMessageArrived(string msg)
     {
         string[] newStrings = msg.Split(',');
-        Debug.Log(x);
+        Debug.Log(button1);
 
         x = float.Parse(newStrings[0]);
         y = float.Parse(newStrings[1]);
         z = float.Parse(newStrings[2]);
-       button1 = int.Parse(newStrings[3]);
-       button2= int.Parse(newStrings[4]);
+        button1 = int.Parse(newStrings[3]);
+        button2 = int.Parse(newStrings[4]);
 
-        if (x >= 50 && x <= 235)
-        {
-            battery.transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f * Time.deltaTime, transform.position.z);
-            Debug.Log("Down");
-        }
-        if (y>= 2 && y <= 40)
-        {
-            battery.transform.position = new Vector3(transform.position.x + 0.5f * Time.deltaTime, transform.position.y, transform.position.z);
-            Debug.Log("Left");
-        }
-        if (y >= -25 && y<= 2)
-        {
-            battery.transform.position = new Vector3(transform.position.x - 0.5f * Time.deltaTime, transform.position.y, transform.position.z);
-            Debug.Log("Right");
-        }
-        if (z >= -170 && z <= 150)
-        {
-            battery.transform.position = new Vector3(transform.position.x - 0.5f * Time.deltaTime, transform.position.y, transform.position.z);
-            Debug.Log("Up");
-        }
-
-
-
-        // Debug.Log(gameManager.currentPlush);
     }
 
     void OnConnectionEvent(bool success)
     {
         Debug.Log(success ? "Device connected" : "Device disconnected");
     }
-}
+    void Update()
+        {
+            if (z<155 && z>20 )
+            {
+                battery.transform.position = new Vector3(battery.transform.position.x, battery.transform.position.y - 0.5f * Time.deltaTime, battery.transform.position.z);
+                Debug.Log("Down");
+            }
+            if (y>20)
+            {
+                battery.transform.position = new Vector3(battery.transform.position.x + 0.5f * Time.deltaTime, battery.transform.position.y, battery.transform.position.z);
+                Debug.Log("Left");
+            }
+            if (y <-20)
+            {
+                battery.transform.position = new Vector3(battery.transform.position.x - 0.5f * Time.deltaTime, battery.transform.position.y, battery.transform.position.z);
+                Debug.Log("Right");
+            }
+            if (z >= -155 && z<20)
+            {
+                battery.transform.position = new Vector3(battery.transform.position.x - 0.5f * Time.deltaTime, battery.transform.position.y, battery.transform.position.z);
+                Debug.Log("Up");
+            }
+            if (button1 == 1)
+            {
+                Debug.Log("button1");
+                if (temperature.hotvalue > 0)
+                {
+                    temperature.coldvalue = temperature.coldvalue - 5;
+                }
+                if (temperature.coldvalue <= 0)
+                {
+                    temperature.hotvalue = temperature.hotvalue + 5;
+                }
+            }
+            if (button2 == 1)
+            {
+                Debug.Log("button2");
+                if (temperature.hotvalue > 0)
+                {
+                    temperature.hotvalue = temperature.hotvalue - 5;
+                }
+                if (temperature.coldvalue > 0)
+                {
+                    temperature.coldvalue = temperature.coldvalue - 5;
+                }
+            }
+        }
+        // Debug.Log(gameManager.currentPlush);
+    }
+
+

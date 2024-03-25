@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing.Text;
 using System.Numerics;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.PostProcessing;
@@ -12,43 +13,45 @@ using Vignette = UnityEngine.Rendering.PostProcessing.Vignette;
 
 public class temperature : MonoBehaviour
 {
-   public GameObject posteffect;
+   
     public float weightValue = 0.0f; // Lower camel case for variable names
-    private PostProcessVolume postProcessVolume;
-    private Vignette vignette;
+    
+   
     public Slider HotSlider;
     public Slider ColdSlider;
     public int colliderNumber;
+    public static float hotvalue, coldvalue;
+    [SerializeField]
+    public GameObject posteffect;
+    private Vignette vignette;
+    public Volume vol;
     // Start is called before the first frame update
     void Start()
     {
+        
         HotSlider.maxValue = 20;
         ColdSlider.maxValue = 20;
-        HotSlider.value = 0;
-        ColdSlider.value = 0;
-        postProcessVolume = posteffect.GetComponent<PostProcessVolume>();
-
-        // Check if postProcessVolume is null before trying to access its profile
-        if (postProcessVolume != null && postProcessVolume.profile.TryGetSettings(out vignette))
-        {
-            vignette.intensity.value = 0f; // Initialize intensity to 0
-        }
+        hotvalue = 0;
+        coldvalue = 0;
+       
     }
     private void Update()
     {
-        
+        HotSlider.value = hotvalue;
+        ColdSlider.value = coldvalue;
+        Debug.Log(hotvalue);
     }
     // OnTriggerStay is called every frame while a GameObject with a collider is within the trigger
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("cat"))
-        {   if(ColdSlider.value >0)
+        {   if(coldvalue >0)
             {
-                ColdSlider.value=ColdSlider.value-0.05f;
+                coldvalue =coldvalue-0.05f;
             }
-            if(ColdSlider.value <=0)
+            if(coldvalue <=0)
             {
-                HotSlider.value=HotSlider.value+0.05f;
+                hotvalue=hotvalue+0.05f;
             }
           
             Debug.Log("EnterTrigger/Stay");
@@ -61,10 +64,10 @@ public class temperature : MonoBehaviour
         }
         else
         {
-            HotSlider.value=HotSlider.value-0.05f/colliderNumber;
-            if (HotSlider.value <= 0)
+            hotvalue=hotvalue-0.05f/colliderNumber;
+            if (hotvalue <= 0)
             {
-                ColdSlider.value=ColdSlider.value+0.05f/colliderNumber;
+               coldvalue=coldvalue+0.05f/colliderNumber;
             }
         }
     }
