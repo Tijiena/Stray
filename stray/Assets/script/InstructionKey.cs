@@ -17,6 +17,11 @@ public class InstructionKey : MonoBehaviour
        if(Input.GetKeyDown(KeyCode.Q)){
         instructionPanel.SetActive(true);
        }
+       
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            instructionPanel.SetActive(false);
+        }
     }
     public void InstructionPanelButton(){
         instructionPanel.SetActive(true);
