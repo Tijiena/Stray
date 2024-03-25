@@ -12,29 +12,35 @@ using Vignette = UnityEngine.Rendering.PostProcessing.Vignette;
 
 public class temperature : MonoBehaviour
 {
-    public Slider tem_slider;
-    public Volume vol;
-    public GameObject posteffect;
-    public float WeightValue;
-    public Vignette _vg;
-
+   public GameObject posteffect;
+    public float weightValue = 0.0f; // Lower camel case for variable names
+    private PostProcessVolume postProcessVolume;
+    private Vignette vignette;
 
     // Start is called before the first frame update
     void Start()
     {
-        vol = posteffect.GetComponent<Volume>();
-        vol.weight = 0f;
-        
+        postProcessVolume = posteffect.GetComponent<PostProcessVolume>();
 
-
+        // Check if postProcessVolume is null before trying to access its profile
+        if (postProcessVolume != null && postProcessVolume.profile.TryGetSettings(out vignette))
+        {
+            vignette.intensity.value = 0f; // Initialize intensity to 0
+        }
     }
 
-    // Update is called once per frame
-    private void OnTriggerStay(Collider collision)
+    // OnTriggerStay is called every frame while a GameObject with a collider is within the trigger
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject.tag == "cat")
+        if (other.gameObject.CompareTag("cat"))
         {
-            vol.weight=vol.weight+0.1f;
+            Debug.Log("EnterTrigger/Stay");
+            weightValue += 0.1f;
+
+            if (vignette != null)
+            {
+                vignette.intensity.value = 0.5f;
+            }
         }
     }
    
