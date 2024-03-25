@@ -20,6 +20,9 @@ public class EnterBossScene : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("cat")) { SceneManager.LoadScene(1); }
+        if (other.gameObject.CompareTag("cat")) {
+            Debug.Log("ChangeBossScene");
+            SceneManager.LoadScene(1); 
+        }
     }
 }

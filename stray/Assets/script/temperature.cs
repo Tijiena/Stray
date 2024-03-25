@@ -29,8 +29,8 @@ public class temperature : MonoBehaviour
     void Start()
     {
         
-        HotSlider.maxValue = 20;
-        ColdSlider.maxValue = 20;
+        HotSlider.maxValue = 10;
+        ColdSlider.maxValue = 10;
         hotvalue = 0;
         coldvalue = 0;
        

@@ -55,23 +55,23 @@ public class InterpretArduinoS : MonoBehaviour
                 Debug.Log("button1");
                 if (temperature.hotvalue > 0)
                 {
-                    temperature.coldvalue = temperature.coldvalue - 5;
+                    temperature.hotvalue = temperature.hotvalue -0.5f;
                 }
-                if (temperature.coldvalue <= 0)
+                if (temperature.hotvalue<= 0)
                 {
-                    temperature.hotvalue = temperature.hotvalue + 5;
+                    temperature.coldvalue = temperature.coldvalue + 0.5f;
                 }
             }
             if (button2 == 1)
             {
                 Debug.Log("button2");
-                if (temperature.hotvalue > 0)
+                if (temperature.coldvalue<=0)
                 {
-                    temperature.hotvalue = temperature.hotvalue - 5;
+                    temperature.hotvalue = temperature.hotvalue + 0.5f;
                 }
                 if (temperature.coldvalue > 0)
                 {
-                    temperature.coldvalue = temperature.coldvalue - 5;
+                    temperature.coldvalue = temperature.coldvalue - 0.5f;
                 }
             }
         }
