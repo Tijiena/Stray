@@ -17,20 +17,17 @@ public class BossMovement : MonoBehaviour
     private Vector3 moveDirection;
     private void Start()
     {
-        X = Random.Range(minX, maxX);
-        Z = Random.Range(minZ, maxZ);
+        X = 5f;
     }
     void Update()
     {
-        moveDirection = new Vector3(X, 0f, Z);
+        moveDirection = new Vector3(X, 0f, 0f);
         transform.position += moveDirection * speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider collision)
     {
-        xx= Random.Range(-2, 2);
-        zz = Random.Range(-2, 2);
-        X = -X+xx;
-        Z = -Z+zz;
+        X = -X;
+        Z = -Z;
     }
 }
