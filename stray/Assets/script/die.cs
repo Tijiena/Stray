@@ -17,10 +17,12 @@ public class die : MonoBehaviour
         if (temperature.hotvalue>= 10)
         {
             transform.position=startposition;
+            temperature.hotvalue = 0;
         }
         if (temperature.coldvalue >= 10)
         {
             transform.position = startposition;
+            temperature.coldvalue = 0;
         }
     }
 }
