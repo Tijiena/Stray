@@ -39,7 +39,14 @@ public class temperature : MonoBehaviour
     {
         HotSlider.value = hotvalue;
         ColdSlider.value = coldvalue;
-        Debug.Log(hotvalue);
+        if (hotvalue > 0)
+        {
+            hotvalue = hotvalue - 0.1f / colliderNumber;
+        }
+        if (hotvalue <= 0)
+        {
+            coldvalue = coldvalue + 0.1f / colliderNumber;
+        }
     }
     // OnTriggerStay is called every frame while a GameObject with a collider is within the trigger
     private void OnTriggerStay(Collider other)
@@ -53,23 +60,14 @@ public class temperature : MonoBehaviour
             {
                 hotvalue=hotvalue+0.05f;
             }
-          
-            Debug.Log("EnterTrigger/Stay");
-            weightValue += 0.1f;
+         
 
             if (vignette != null)
             {
                 vignette.intensity.value = 0.5f;
             }
         }
-        else
-        {
-            hotvalue=hotvalue-0.05f/colliderNumber;
-            if (hotvalue <= 0)
-            {
-               coldvalue=coldvalue+0.05f/colliderNumber;
-            }
-        }
+
     }
    
 }
